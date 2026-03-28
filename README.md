@@ -1,14 +1,30 @@
 # Fuzzy-Store-Funnel-and-Product-Launching-analysis
 An end-to-end data analysis project focused on optimizing the conversion funnel and evaluating product launch performance for "Fuzzy Store." This repository contains tools to identify customer drop-off points and measure the success of marketing campaigns through data-driven insights.
 # Project Background
-Background about the company, including the industry, active years, business model, and key business metrics. Explain this from the POV of a data analyst who is working at the company.
+Fuzzy Factory is a direct-to-consumer e-commerce company specializing in premium stuffed animals and gift-oriented bear products. The company has been operational since early 2012 and operates entirely through its online storefront, making website performance and conversion optimization central to its revenue model.
+
+As the in-house Data Analyst, the primary mandate is to support marketing, product, and executive leadership in making data-backed decisions across four strategic areas: understanding growth trends, diagnosing funnel inefficiencies, evaluating product launches, and optimizing marketing channel spend.
+
+Key business metrics tracked:
+
+- Website Sessions & Monthly Orders (volume and YoY growth)
+- Conversion Rate (CVR) — sessions to completed purchase
+- Revenue by product and landing page
+- Bounce rate by landing page variant
+- Cart abandonment rate
+- Cross-sell attach rate
+
 Insights and recommendations are provided on the following key areas:
-Category 1:
-Category 2:
-Category 3:
-Category 4:
+
+- Category 1: Website Sessions & Orders Growth
+- Category 2: Conversion Funnel Analysis
+- Category 3: Product Launch Impact
+- Category 4: Channel Optimization (in progress)
+
 The Python codes used to inspect and clean the data for this analysis can be found here [link].
+
 Targeted SQL queries regarding various business questions can be found here [link].
+
 An interactive Tableau dashboard used to report and explore sales trends can be found here [link].
 # Data Structure & Initial Checks
 The companies main database structure as seen below consists of four tables: table1, table2, table3, table4, with a total row count of X records. A description of each table is as follows:

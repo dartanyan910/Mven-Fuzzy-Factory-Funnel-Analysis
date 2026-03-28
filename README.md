@@ -88,10 +88,15 @@ Specific observation that is related to a recommended action. Recommendation or 
 Specific observation that is related to a recommended action. Recommendation or general guidance based on this observation.
 Specific observation that is related to a recommended action. Recommendation or general guidance based on this observation.
 # Assumptions and Caveats:
+
 Throughout the analysis, multiple assumptions were made to manage challenges with the data. These assumptions and caveats are noted below:
 Handling Null Values: For records in the website_sessions table where utm_campaign is missing (null), traffic is categorized based on the following technical criteria:
-Direct Traffic: Defined as sessions where both utm_source and http_referer are null. This represents users who accessed the site directly via URL entry or browser bookmarks, without an external referral or campaign tracking.
-Organic Search: Defined as sessions where utm_source is null but the http_referer contains "search" strings. This indicates users who discovered the website through unpaid results on search engines (e.g., Google, Bing).
-Temporal Scope Exclusions: Data for March 2012 has been excluded from the primary analysis for the following reasons:
-Data Incompleteness: The dataset for this period only begins on the 19th of the month. Including this partial data would lead to skewed Month-over-Month or Year-over-Year growth metrics, resulting in misleading interpretations.
+
+**1. Direct Traffic:** Defined as sessions where both utm_source and http_referer are null. This represents users who accessed the site directly via URL entry or browser bookmarks, without an external referral or campaign tracking.
+
+- Organic Search: Defined as sessions where utm_source is null but the http_referer contains "search" strings. This indicates users who discovered the website through unpaid results on search engines (e.g., Google, Bing).
+
+- Temporal Scope Exclusions: Data for March 2012 has been excluded from the primary analysis for the following reasons:
+
+**2. Data Incompleteness:** The dataset for this period only begins on the 19th of the month. Including this partial data would lead to skewed Month-over-Month or Year-over-Year growth metrics, resulting in misleading interpretations.
 Relevance and Recency: Given that this data is over three years old, it lacks sufficient proximity to current market conditions and has negligible impact on contemporary currently strategic decision-making.

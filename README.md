@@ -106,13 +106,21 @@ Specific observation that is related to a recommended action. Recommendation or 
 # Assumptions and Caveats:
 
 Throughout the analysis, multiple assumptions were made to manage challenges with the data. These assumptions and caveats are noted below:
-Handling Null Values: For records in the website_sessions table where utm_campaign is missing (null), traffic is categorized based on the following technical criteria:
 
-**1. Direct Traffic:** Defined as sessions where both utm_source and http_referer are null. This represents users who accessed the site directly via URL entry or browser bookmarks, without an external referral or campaign tracking.
+**1. Partial months excluded from YoY trend analysis:**
+The dataset begins on March 19, 2012 and ends on March 19, 2015. Both March periods contain only 13–19 days of data. Including these months in YoY comparisons would overstate 2013 growth by approximately 2x due to unequal day counts in the baseline. All trend analysis uses April 2012 as the start point for YoY calculations. For March 2015 performance, a Month-to-Date (MTD) comparison using the same 19-day window from 2014 is used instead of full-month extrapolation.
 
-- Organic Search: Defined as sessions where utm_source is null but the http_referer contains "search" strings. This indicates users who discovered the website through unpaid results on search engines (e.g., Google, Bing).
+**2. Null UTM campaign handling:**
 
-- Temporal Scope Exclusions: Data for March 2012 has been excluded from the primary analysis for the following reasons:
+For records in website_sessions where utm_campaign is missing (null), traffic is categorized using the following logic:
 
-**2. Data Incompleteness:** The dataset for this period only begins on the 19th of the month. Including this partial data would lead to skewed Month-over-Month or Year-over-Year growth metrics, resulting in misleading interpretations.
-Relevance and Recency: Given that this data is over three years old, it lacks sufficient proximity to current market conditions and has negligible impact on contemporary currently strategic decision-making.
+- ***Direct Traffic:*** Sessions where both utm_source and http_referer are null — users accessing via direct URL or bookmarks.
+- ***Organic Search:*** Sessions where utm_source is null but http_referer contains search engine strings — unpaid search discovery.
+
+**3. Bounce rate benchmarks sourced from Shopify industry data:**
+
+The e-commerce bounce rate benchmark range of 36–45% referenced in Category 2 is based on published Shopify industry averages for retail and gifting categories. This benchmark should be periodically refreshed as market conditions evolve.
+
+**4. March 2015 YoY decline is a data artifact, not a business signal:**
+
+The apparent -3.7% YoY session decline in March 2015 is caused by the dataset ending on March 19 — creating an incomplete month compared to a full March 2014. This should not be reported as a performance decline without the MTD context provided in Category 1.

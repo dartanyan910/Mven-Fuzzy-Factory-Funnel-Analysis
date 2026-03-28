@@ -32,7 +32,9 @@ Figure 1: Entities Relationship Diagram
 
 # Executive Summary
 ## Overview of Findings
-Explain the overarching findings, trends, and themes in 2-3 sentences here. This section should address the question: "If a stakeholder were to take away 3 main insights from your project, what are the most important things they should know?" You can put yourself in the shoes of a specific stakeholder - for example, a marketing manager or finance director - to think creatively about this section.
+
+Fuzzy Factory recorded over 400,000 website sessions across the analysis period, yet only 32,313 resulted in completed transactions — an overall conversion rate of 6.8%. This report investigates the root causes of the 93.2% drop-off, identifies the primary bottleneck in the conversion funnel, and documents the A/B testing journey that progressively improved landing page performance. The findings support a focused optimization effort on the Detail View → Add-to-cart stage, while confirming that the Home/Landing page bottleneck has been largely resolved through iterative experimentation.
+
 [Visualization, including a graph of overall trends or snapshot of a dashboard]
 # Insights Deep Dive
 ## Category 1:
@@ -42,23 +44,21 @@ Main insight 3. More detail about the supporting analysis about this insight, in
 Main insight 4. More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
 [Visualization specific to category 1]
 ## Category 2: Funnel
-Toàn bộ funnel đang mất khoảng 91,5% user từ Home đến Success, dẫn tới overall conversion rate chỉ 8,5% trên 327K sessions và 28K purchased sessions trong giai đoạn 2012–2015. Phần lớn rơi rụng diễn ra sớm (Home → Product) và giữa phễu (Detail View → Cart), cho thấy vấn đề chính nằm ở khả năng đưa người dùng từ khám phá sang hành động, hơn là ở bước thanh toán cuối cùng.
+
+**Bottleneck 1 — Home → Product Page (~55.5% drop-off):**
+More than 200,000 sessions exit before viewing any product. Initially flagged as a UI/UX concern, however average time-on-page data (~186 seconds) suggests users do engage with the homepage. The high drop-off in early 2012 (>60% bounce rate) triggered the A/B testing program documented in Section 4. This bottleneck has since been largely resolved.
+
+**Bottleneck 2 — Detail View → Add-to-Cart (~55% drop-off) (Primary):**
+This is the most significant active bottleneck. Average time on the product detail page is approximately 2 minutes — indicating user engagement rather than UI friction. The high exit rate therefore points to product-side barriers: insufficient product description quality, non-compelling imagery, or a pricing mismatch relative to willingness-to-pay.
+
+**Bottleneck 3 — Billing → Purchase (~65% cart abandonment):**
+Elevated, but within the accepted e-commerce benchmark range of 60–80%. Average time at this stage (~3.25 minutes) suggests checkout complexity as a contributing factor. Given benchmark alignment, this is a lower priority relative to Bottleneck 2.
 
 <img width="682" height="228" alt="image" src="https://github.com/user-attachments/assets/9e096190-1026-4e6c-80f0-02a143dd7729" />
 
 Figure 2: Conversion Rate and Drop-off by Stages
 
 ### Stage Home → Product 
-Table 1:
-
-| Landing Page | Total Sessions | Bounce Sessions | Bounce Rate (%) | Avg. Time (sec) | Avg. Time Before Next Page (sec) |
-|:---|---:|---:|---:|---:|---:|
-| `/home` | 137,576 | 57,346 | 41.68% | 185.63 | 185.63 |
-| `/lander-2` | 131,170 | 59,249 | 45.17% | 185.58 | 185.58 |
-| `/lander-3` | 79,000 | 39,733 | 50.29% | 184.64 | 184.64 |
-| `/lander-5` | 68,166 | 25,131 | 36.87% | 184.18 | 184.18 |
-| `/lander-1` | 47,574 | 25,330 | 53.24% | 184.28 | 184.28 |
-| `/lander-4` | 9,385 | 4,851 | 51.69% | 187.86 | 187.86 |
 
 Based on Table 1, The bounce rates for Fuzzy Store's landing pages range from 41.68% to 53.24%. Compared to the e-commerce industry benchmark of 36% - 45% ([source](https://www.shopify.com/hk-en/blog/bounce-rate)), our current figures are significantly higher. The high bounce rates suggest friction at the initial touchpoint. Potential causes include slow page load times, non-mobile-friendly layouts, or a lack of compelling Call-to-Action (CTA) elements.
 

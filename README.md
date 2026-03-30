@@ -7,19 +7,16 @@ As the in-house Data Analyst, the primary mandate is to support marketing, produ
 
 Key business metrics tracked:
 
-- Website Sessions & Monthly Orders (volume and YoY growth)
 - Conversion Rate (CVR) — sessions to completed purchase
 - Revenue by product and landing page
 - Bounce rate by landing page variant
 - Cart abandonment rate
 - Cross-sell attach rate
 
-Insights and recommendations are provided on the following key areas:
+Insights and recommendations are provided on the following stakeholder questions:
 
-- Category 1: Website Sessions & Orders Growth
-- Category 2: Conversion Funnel Analysis
-- Category 3: Product Launch Impact
-- Category 4: Channel Optimization (in progress)
+- **Question 2:** Why does high traffic volume not translate into proportional order volume — where are customers dropping off?
+- **Question 4:** Which marketing channels deliver the highest-quality traffic, and where should we reallocate spend?
 
 The Python codes used to inspect and clean the data for this analysis can be found here [link].
 
@@ -47,40 +44,41 @@ Figure 1: Entities Relationship Diagram
 
 
 # Executive Summary
-## Overview of Findings
-
 Fuzzy Factory recorded over 400,000 website sessions across the analysis period, yet only 32,313 resulted in completed transactions — an overall conversion rate of 6.8%. This report investigates the root causes of the 93.2% drop-off, identifies the primary bottleneck in the conversion funnel, and documents the A/B testing journey that progressively improved landing page performance. The findings support a focused optimization effort on the Detail View → Add-to-cart stage, while confirming that the Home/Landing page bottleneck has been largely resolved through iterative experimentation.
 
 [Visualization, including a graph of overall trends or snapshot of a dashboard]
 # Insights Deep Dive
-## Category 1:
-Main insight 1. More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
-Main insight 2. More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
-Main insight 3. More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
-Main insight 4. More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
-[Visualization specific to category 1]
-## Category 2: Funnel
+## Question 1: Why does high traffic volume not translate into proportional order volume — where are customers dropping off?
 
-**Bottleneck 1 — Home → Product Page (~55.5% drop-off):**
-More than 200,000 sessions exit before viewing any product. Initially flagged as a UI/UX concern, however average time-on-page data (~186 seconds) suggests users do engage with the homepage. The high drop-off in early 2012 (>60% bounce rate) triggered the A/B testing program documented in Section 4. This bottleneck has since been largely resolved.
+<img width="1011" height="333" alt="Ảnh chụp màn hình 2026-03-29 230840" src="https://github.com/user-attachments/assets/15abc764-181f-422b-a3b2-fff8486d9917" />
 
-**Bottleneck 2 — Detail View → Add-to-Cart (~55% drop-off) (Primary):**
-This is the most significant active bottleneck. Average time on the product detail page is approximately 2 minutes — indicating user engagement rather than UI friction. The high exit rate therefore points to product-side barriers: insufficient product description quality, non-compelling imagery, or a pricing mismatch relative to willingness-to-pay.
+**Figure 2: Conversion Rate and Drop-off by Stages**
 
-**Bottleneck 3 — Billing → Purchase (~65% cart abandonment):**
-Elevated, but within the accepted e-commerce benchmark range of 60–80%. Average time at this stage (~3.25 minutes) suggests checkout complexity as a contributing factor. Given benchmark alignment, this is a lower priority relative to Bottleneck 2.
+Between March 2012 and March 2015, the Fuzzy Factory e-commerce platform recorded a total of 472,871 sessions. Out of these, only 32,313 sessions successfully converted into orders, resulting in an overall Conversion Rate (CVR) of 6.8%. Analysis of the conversion funnel reveals three critical bottlenecks:
 
-<img width="682" height="228" alt="image" src="https://github.com/user-attachments/assets/9e096190-1026-4e6c-80f0-02a143dd7729" />
+Point 1: Home -> Product: More than 200,000 sessions exit the site immediately after landing, without viewing any specific product. This suggests a significant gap in initial engagement or landing page relevance.
 
-Figure 2: Conversion Rate and Drop-off by Stages
+Point 2: Product Detail View -> Add-to-cart: This stage represents the largest point of friction in the funnel. Approximately 183,306 sessions—nearly 72% of users who viewed a product—dropped off before adding an item to their cart. This indicates potential issues with product pricing, lack of trust, or poor UI/UX on the product detail pages.
 
-### Stage Home → Product 
+Point 3: Add-to-cart -> Success Purchase: Even after expressing clear intent by adding items to the cart, the conversion to a successful purchase is only about 46%. We are losing over 37,000 potential orders during the checkout phase, which often points to friction in the shipping/billing steps or technical errors during payment.
 
-Based on Table 1, The bounce rates for Fuzzy Store's landing pages range from 41.68% to 53.24%. Compared to the e-commerce industry benchmark of 36% - 45% ([source](https://www.shopify.com/hk-en/blog/bounce-rate)), our current figures are significantly higher. The high bounce rates suggest friction at the initial touchpoint. Potential causes include slow page load times, non-mobile-friendly layouts, or a lack of compelling Call-to-Action (CTA) elements.
+**Bottleneck 2 — Detail View → Add-to-Cart (~55% drop-off):**
 
-This idea also supported by Figure 3. Thời gian spent trung bình của các user đến bước tiếp theo
+Initially flagged as a UI/UX concern, average time-on-page data (~186 seconds) indicates users do engage with the home page before leaving. The high drop-off in early 2012 (>60% bounce rate) triggered the A/B testing program documented below. This bottleneck has since been largely resolved through iterative landing page experimentation — no further optimization effort is recommended here.
 
-<img width="461" height="226" alt="image" src="https://github.com/user-attachments/assets/b6998987-c47d-4ba6-91f7-8b537a54e966" />
+**Bottleneck 2 — Detail View → Add-to-Cart (~55% drop-off):**
+
+This is the most significant active bottleneck. Average time on the product detail page is approximately 2 minutes — indicating user engagement rather than UI friction. The high exit rate therefore points to product-side barriers: insufficient product description quality, non-compelling imagery, or a pricing mismatch relative to willingness-to-pay. This is the highest-priority optimization target.
+
+<img width="1186" height="690" alt="1a110e4e-6547-49cf-adc4-aa826a199ffe" src="https://github.com/user-attachments/assets/a5708691-a296-4635-bdbb-b6c9f30a2d1a" />
+
+**Figure 3:** Product Detail to Cart Conversion Rate by Product
+
+**Bottleneck 3 — Billing Drop-off (37.9%):**
+
+Elevated, but within the accepted e-commerce benchmark range of ~60–80% ([source](https://baymard.com/lists/cart-abandonment-rate)). Average time at this stage (~3.25 minutes) suggests checkout form complexity as a contributing factor. Given benchmark alignment, this is a lower priority relative to Bottleneck 2.
+
+
 
 Figure 3: Avg Time check-out
 

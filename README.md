@@ -73,7 +73,7 @@ To better understand these bottlenecks and explain why high traffic volume does 
 
 ### **Bottleneck 1:** Home → Product
 
-Analysis across three dimensions — landing page performance, campaign attribution, and device type — reveals that the primary driver of Home-stage drop-off can from both page design and traffic quality.
+Analysis across three dimensions — landing page performance, campaign attribution, and device type — reveals that the primary driver of Home-stage drop-off can from both page design and traffic source.
 
 ***Page Design***
 
@@ -91,13 +91,17 @@ Non-bounce sessions averaged 185 seconds (~3 minutes), significantly exceeding t
 
 These findings effectively reject the hypothesis of a landing page design flaw, shifting the strategic focus to downstream friction points.
 
-***Traffic Quality***
+***Traffic Source***
 
 **1. By landing page**
 
-Insight 1 — Inverse relationship between traffic volume and quality on `/lander-3`
+Insight 1: The Pilot campaign inflated traffic volume on `/lander‑3` but sharply diluted its quality, directly suppressing CTR and downstream conversions.
 
-Between December 2013 and February 2014, the Pilot campaign injected a significant volume of new traffic into `/lander-3`. Prior to the campaign (December 2013), the page handled 3,829 sessions with 2,047 users (53.5% CTR) proceeding to the product catalog. Following Pilot campaign activation, total sessions on `/lander-3` increased to 4,232 in January 2014 and peaked at 5,129 in February 2014 — yet the number of users advancing to the next step declined to 1,626 and 1,797 respectively, as CTR collapsed to 38.4% and 35.0%. The addition of approximately 1,300–2,000 incremental sessions per month from the Pilot campaign effectively destroyed more value than it created. Following campaign termination, `/lander-3` recovered to 2,077 users advancing (CTR 53.2%) in April 2014, confirming that the deterioration was entirely attributable to Pilot traffic characteristics rather than any change in page quality.
+Between December 2013 and February 2014, the campaign drove a surge in sessions — from 3,829 to 5,129 (+34%) — yet the number of users advancing to the product catalog fell from 2,047 to 1,797. CTR consequently collapsed from 53.5% to 35.0%.
+
+The incremental 1,300–2,000 sessions brought in by Pilot traffic carried low purchase intent and eroded page efficiency, effectively destroying more value than they created. After the campaign ended, `/lander‑3` rebounded to 2,077 advancing users (CTR 53.2%) by April 2014, confirming that the issue lay not in page quality but in traffic composition.
+
+So what: The Pilot campaign’s broad targeting strategy inflated headline traffic metrics while masking a decline in buyer intent — a key factor explaining why higher visits did not translate into proportional order volume.
 
 Insight 2 — Dual failure of the desktop_targeted campaign on `/lander-2`
 
@@ -113,16 +117,6 @@ Insight 2 — Audience-page mismatch in the desktop_targeted campaign
 
 The desktop_targeted campaign was designed to optimize conversion among desktop users, yet delivered traffic with below-average purchase intent. The 23.4 percentage point CTR decline on `/lander-2` between October and December 2014 (53.1% → 29.7%) constitutes the strongest evidence of systematic targeting misalignment in the dataset. Whether the root cause lies in ad creative, audience definition, or bid strategy cannot be determined from session data alone, but the outcome — a page that previously converted more than half its visitors now converting fewer than one in three — warrants a formal post-mortem on campaign configuration.
 
-**3. By device type**
-
-Insight 1 — Mobile consistently underperforms desktop across all landing pages
-
-Device-level analysis confirms that mobile sessions record materially lower CTR than desktop sessions across all landing page variants and time periods. The Pilot campaign, which disproportionately targeted mobile users via socialbook, compounded this structural disadvantage by routing low-intent mobile traffic to `/lander-3` — a page not optimized for mobile viewing. The combination of device-inherent friction and campaign-driven traffic dilution produced the most severe CTR readings in the dataset (35.0% in February 2014).
-
-Insight 2 — Desktop performance is vulnerable to campaign misalignment
-
-Despite desktop's structural conversion advantage, poor campaign targeting can neutralize it entirely. The desktop_targeted campaign on `/lander-2` reduced CTR to 29.7% in December 2014 — below the mobile average for most periods — demonstrating that device type alone does not determine conversion quality when incoming traffic intent is misaligned with page content.
-
 |<img width="1032" height="525" alt="image" src="https://github.com/user-attachments/assets/47f93bb0-b6ef-45f7-ac0d-52c1890f74dc" />|
 |:----------------:|
 |**Figure 3:** Landing page Click-through-rate Overtime|
@@ -131,15 +125,30 @@ Despite desktop's structural conversion advantage, poor campaign targeting can n
 |:----------------:|
 |**Figure 4:** Monthly Traffic Volume by Landing page|
 
+**3. By device type**
+
+|<img width="1182" height="590" alt="image" src="https://github.com/user-attachments/assets/4577a769-073d-4d6d-99bd-1a47006b8f4f" />|
+|:----------------:|
+|**Figure 5:** Click-through rate Trend by device|
+
+|<img width="1184" height="590" alt="image" src="https://github.com/user-attachments/assets/7ab0a79b-ae51-42f8-a44b-58393356f42c" />|
+|:----------------:|
+|**Figure 5:** Traffic Volume Trend by device|
+
+Insight — Mobile consistently underperforms desktop across all landing pages
+
+Device-level analysis confirms that mobile sessions record materially lower CTR than desktop sessions across all landing page variants and time periods. The Pilot campaign, which disproportionately targeted mobile users via socialbook, compounded this structural disadvantage by routing low-intent mobile traffic to `/lander-3` — a page not optimized for mobile viewing.
+
+
 ## **Bottleneck 2 — Detail View → Add-to-Cart (~55% drop-off):**
 
-This is the most significant active bottleneck. Average time on the product detail page is approximately 2 minutes — indicating user engagement rather than UI friction. The high exit rate therefore points to product-side barriers: insufficient product description quality, non-compelling imagery, or a pricing mismatch relative to willingness-to-pay. This is the highest-priority optimization target.
+This is the most significant active bottleneck. 
 
 |<img width="1186" height="690" alt="image" src="https://github.com/user-attachments/assets/e005ec95-6531-4caf-a1f6-b30636b18736" />|
 |:----------------:|
 |**Figure 5:** Product Detail to Add-to-Cart Conversion Rate by Product|
 
-## **Bottleneck 3 — Billing Drop-off (37.9%):**
+## **Bottleneck 3 — Check-out funnel (Shipping → Billing → Purchased):**
 
 Elevated, but within the accepted e-commerce benchmark range of ~60–80% ([source](https://baymard.com/lists/cart-abandonment-rate)). Average time at this stage (~3.25 minutes) suggests checkout form complexity as a contributing factor. Given benchmark alignment, this is a lower priority relative to Bottleneck 2.
 
@@ -168,4 +177,4 @@ The e-commerce bounce rate benchmark range of 36–45% referenced in Category 2 
 
 **3. March 2015 YoY decline is a data artifact, not a business signal:**
 
-The apparent -3.7% YoY session decline in March 2015 is caused by the dataset ending on March 19 — creating an incomplete month compared to a full March 2014. Therefore, this should not be reported as a performance decline.
+The apparent decline in March 2015 is caused by the dataset ending on March 19 — creating an incomplete month compared to a full March 2014. Therefore, this should not be reported as a performance decline.

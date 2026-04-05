@@ -1,5 +1,5 @@
-# Fuzzy-Store-Funnel-and-Product-Launching-analysis
-An end-to-end data analysis project focused on optimizing the conversion funnel and evaluating product launch performance for "Fuzzy Store." This repository contains tools to identify customer drop-off points and measure the success of marketing campaigns through data-driven insights.
+# Maven-Fuzzy-Factory-Funnel-Traffic-Analysis
+An end-to-end data analysis project focused on optimizing the conversion funnel performance for "Maven Fuzzy Factory." This repository contains tools to identify customer drop-off points and measure the success of marketing campaigns through data-driven insights.
 # Project Background
 Fuzzy Factory is a direct-to-consumer e-commerce company specializing in premium stuffed animals and gift-oriented bear products. The company has been operational since early 2012 and operates entirely through its online storefront, making website performance and conversion optimization central to its revenue model.
 
@@ -44,6 +44,27 @@ The companies main database structure as seen below consists of four tables: tab
 # Executive Summary
 ..........
 
+# Overview
+
+## Traffic & Growth Overview
+ 
+**Fuzzy Factory's growth over three years was not just volume — it was volume with improving efficiency at every stage.**
+ 
+| Year | Total Sessions | Total Orders | Overall CVR | Landing → Product | Product → Cart | Cart → Order |
+|---|---|---|---|---|---|---|
+| 2012 | 62,470 | 2,586 | 3.19% → 5.02% | 39% → 50% | 30% → 32% | 22% → 32% |
+| 2013 | 112,781 | 7,447 | 6.09% → 6.95% | 52% → 56% | 33% → 36% | 33% → 37% |
+| 2014 | 233,423 | 16,860 | 6.27% → 7.90% | 49% → 58% | 37% → 39% | 33% → 36% |
+| 2015 | 64,198 | 5,420 | 8.28% → 8.70% | 59% → 60% | 39% → 41% | 34% → 36% |
+ 
+**Traffic scaled 16x, but orders scaled 39x.** Each additional session in 2015 was worth materially more than each session in 2012 — reflecting a funnel that improved in parallel with volume growth.
+ 
+**CVR improvement was driven by all three stages simultaneously.** Landing → Product improved +21pp, Product → Cart improved +11pp, Cart → Order improved +13pp. No single stage carried the improvement — the entire funnel moved together.
+ 
+**The steepest gains occurred between 2012 and 2013.** Overall CVR nearly doubled in this window, coinciding with the introduction of optimized landing pages and mobile-specific routing. Subsequent years showed continued but more moderate improvement — consistent with a maturing funnel approaching its structural ceiling.
+
+## Funnel Snapshot
+
 Table 1: Total Session through funnel
 
 |year|total_sessions|step_1_home|step_2_products|step_3_product_detail|step_4_cart|step_5_shipping|step_6_billing|step_7_ordered|
@@ -53,17 +74,14 @@ Table 1: Total Session through funnel
 |2014|	233423|	233422 |130660 |108182|48794|	33058|	26580|	16860|
 |2015|	64198 |	64198	 | 38612 |32902	|15403|	10473|	8435 |	5420 |
 
-
-|<img width="1011" height="333" alt="Ảnh chụp màn hình 2026-03-29 230840" src="https://github.com/user-attachments/assets/15abc764-181f-422b-a3b2-fff8486d9917" />|
-|:---------:|
-|**Figure 2:** Conversion Rate and Drop-off by Stages|
-
-# Overview
-
 Based on Table 1 and Figure 2, between March 2012 and March 2015, the Fuzzy Factory e-commerce platform recorded a total of 472,871 sessions. Out of these, only 32,313 sessions successfully converted into orders, resulting in an overall Conversion Rate (CVR) of 6.8%. Analysis of the conversion funnel reveals three critical bottlenecks:
 - **Point 1: Home -> Product:** More than 200,000 sessions exit the site immediately after landing, without viewing any specific product.
 - **Point 2: Product Detail View -> Add-to-cart:** Approximately 115,000 sessions—nearly 54,8% of users who viewed a product—dropped off before adding an item to their cart.
 - **Point 3: Add-to-cart -> Success Purchase:** Out of 63,640   sessions that reached the "Add-to-cart" stage, 38,547 sessions failed to complete the transaction, resulting in only 32,313 successful orders.
+
+|<img width="1011" height="333" alt="Ảnh chụp màn hình 2026-03-29 230840" src="https://github.com/user-attachments/assets/15abc764-181f-422b-a3b2-fff8486d9917" />|
+|:---------:|
+|**Figure 2:** Conversion Rate and Drop-off by Stages|
 
 To better understand these bottlenecks and explain why high traffic volume does not translate into proportional orders, a detailed drill-down into the first stage is required:
 
@@ -91,29 +109,21 @@ These findings effectively reject the hypothesis of a landing page design flaw, 
 
 ***Traffic Source***
 
-**1. By landing page**
+**Main insight 1:** Continuous A/B testing on desktop landing pages systematically eliminated the acquisition bottleneck.
 
-Insight 1: The Pilot campaign inflated traffic volume on `/lander‑3` but sharply diluted its quality, directly suppressing CTR and downstream conversions.
+Historical data reveals a deliberate and highly successful testing roadmap for nonbrand (new acquisition) desktop traffic. Originally routed to /home in early 2012, this traffic yielded a poor 44% click-through rate. The introduction of /lander-1 (mid-2012) improved this to ~51%, followed by /lander-2 (2013) pushing it to ~58%. By late 2014, the deployment of /lander-5 achieved a plateau of 64% - 65%. This 20-point absolute increase proves that the top-of-funnel friction for desktop users has been completely resolved through UI/UX iteration.
 
-Between December 2013 and February 2014, the campaign drove a surge in sessions — from 3,829 to 5,129 (+34%) — yet the number of users advancing to the product catalog fell from 2,047 to 1,797. CTR consequently collapsed from 53.5% to 35.0%.
+**Main insight 2:** Mobile-specific landing page routing salvaged mobile performance, though a 10% gap remains.
 
-The incremental 1,300–2,000 sessions brought in by Pilot traffic carried low purchase intent and eroded page efficiency, effectively destroying more value than they created. After the campaign ended, `/lander‑3` rebounded to 2,077 advancing users (CTR 53.2%) by April 2014, confirming that the issue lay not in page quality but in traffic composition.
+Prior to mid-2013, mobile nonbrand traffic was severely underperforming, languishing at a 28% - 33% click-through rate across /home and /lander-1. The introduction of /lander-3, a dedicated mobile landing page, immediately corrected this trajectory, stabilizing mobile CVR at 52% - 54% through early 2015. While this represents a massive operational win, mobile performance still trails the desktop /lander-5 benchmark by approximately 10-12%, indicating the need for a final round of mobile viewport optimization.
 
-So what: The Pilot campaign’s broad targeting strategy inflated headline traffic metrics while masking a decline in buyer intent — a key factor explaining why higher visits did not translate into proportional order volume.
+**Main insight 3:** Strategic traffic routing correctly isolates high-intent cohorts to the legacy homepage.
 
-Insight 2 — Dual failure of the desktop_targeted campaign on `/lander-2`
+The data confirms a sophisticated routing architecture: all newly acquired nonbrand traffic is directed to optimized /lander-x pages, while the original /home page is reserved exclusively for direct, brand, and returning traffic. Because this audience already possesses high intent and brand familiarity, the /home page effortlessly maintains an elite 68% - 75% conversion rate on desktop. The /home page is not a bottleneck; it is functioning perfectly as a navigation hub for loyal customers.
 
-During Q4 2014, the desktop_targeted campaign was routed to `/lander-2`, producing a sustained and severe performance decline. In October 2014, `/lander-2` processed 5,795 sessions with 3,079 users advancing (CTR 53.1%). By December 2014, as desktop_targeted traffic came to dominate the page's session mix, total sessions collapsed to 1,647 — with only 490 users proceeding (CTR 29.7%). This represents a net loss of approximately 2,589 users advancing per month compared to October, despite the page itself remaining unchanged. The campaign failed both in audience selection and message-to-page alignment.
+**Main insight 4:** Customer trust (Repeat vs. New) dictates the ultimate conversion ceiling, overriding device and channel constraints.
 
-**2. By campaign**
-
-Insight 1 — The cost of broad targeting without quality filters
-
-The Pilot campaign demonstrates a recurring pattern: rapid traffic volume expansion without corresponding purchase intent. When broad-targeted traffic is directed to a landing page, the dilution effect on CTR is immediate and measurable. In the case of `/lander-3`, injecting approximately 1,450 – 2,011 low-intent sessions per month (Pilot CTR: ~10–11%) into a page previously converting at 53% reduced the blended CTR by 15–18 percentage points — directly explaining the gap between rising session counts and stagnant order volumes.
-
-Insight 2 — Audience-page mismatch in the desktop_targeted campaign
-
-The desktop_targeted campaign was designed to optimize conversion among desktop users, yet delivered traffic with below-average purchase intent. The 23.4 percentage point CTR decline on `/lander-2` between October and December 2014 (53.1% → 29.7%) constitutes the strongest evidence of systematic targeting misalignment in the dataset. Whether the root cause lies in ad creative, audience definition, or bid strategy cannot be determined from session data alone, but the outcome — a page that previously converted more than half its visitors now converting fewer than one in three — warrants a formal post-mortem on campaign configuration.
+Across all timeframes and devices, Repeat Customer segments consistently outperform New Customer segments within the exact same traffic sources. For example, in early 2015, repeat direct desktop users converted at ~71%, while new direct desktop users converted at ~60%. This persistent 10% to 15% margin isolates the final variable: intent. The remaining drop-offs at the top of the funnel are no longer caused by broken page designs, but rather the natural friction of convincing a first-time visitor to browse products.
 
 |<img width="1032" height="525" alt="image" src="https://github.com/user-attachments/assets/47f93bb0-b6ef-45f7-ac0d-52c1890f74dc" />|
 |:----------------:|
@@ -123,8 +133,6 @@ The desktop_targeted campaign was designed to optimize conversion among desktop 
 |:----------------:|
 |**Figure 4:** Monthly Traffic Volume by Landing page|
 
-**3. By device type**
-
 |<img width="1182" height="590" alt="image" src="https://github.com/user-attachments/assets/4577a769-073d-4d6d-99bd-1a47006b8f4f" />|
 |:----------------:|
 |**Figure 5:** Click-through rate Trend by device|
@@ -132,11 +140,6 @@ The desktop_targeted campaign was designed to optimize conversion among desktop 
 |<img width="1184" height="590" alt="image" src="https://github.com/user-attachments/assets/7ab0a79b-ae51-42f8-a44b-58393356f42c" />|
 |:----------------:|
 |**Figure 5:** Traffic Volume Trend by device|
-
-Insight — Mobile consistently underperforms desktop across all landing pages
-
-Device-level analysis confirms that mobile sessions record materially lower CTR than desktop sessions across all landing page variants and time periods. The Pilot campaign, which disproportionately targeted mobile users via socialbook, compounded this structural disadvantage by routing low-intent mobile traffic to `/lander-3` — a page not optimized for mobile viewing.
-
 
 ## **Bottleneck 2 — Detail View → Add-to-Cart (~55% drop-off):**
 
@@ -170,7 +173,7 @@ Table 5: Billing landing page
 
 **Conclusion:**
 
->The biggest leakage is at the /cart → /shipping step, where conversion is only 67.91%. In other words, about 32% of users leave immediately after viewing their cart. This suggests many users may be checking total cost rather than fully committing to buy yet.
+>The biggest leakage within the checkout funnel is at the /cart → /shipping step, where conversion is only 67.91%. In other words, about 32% of users leave immediately after viewing their cart. This suggests many users may be checking total cost rather than fully committing to buy yet.
 
 # Recommendations:
 Based on the insights and findings above, we would recommend the [stakeholder team] to consider the following:

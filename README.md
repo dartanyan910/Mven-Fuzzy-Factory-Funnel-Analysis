@@ -87,67 +87,55 @@ To better understand these bottlenecks and explain why high traffic volume does 
 
 # Insight Deep Dive
 
-### **Bottleneck 1:** Home → Product
+### **Stage 1:** Top-Funnel Diagnostics (Home/Landing → Product)
 
-Analysis across three dimensions — landing page performance, campaign attribution, and device type — reveals that the primary driver of Home-stage drop-off can from both page design and traffic source.
+***Key takeaway:*** The 200,000+ session drop-off at the top of the funnel is primarily a filtering of low-intent traffic, not a UI/UX failure. Continuous A/B testing and split-routing have optimized this stage close to its ceiling, with the exception of a gap on mobile devices.
 
-***Page Design***
+- **Main finding 1:** The hypothesis that the landing page design is flawed is rejected for desktop users. Historical data traces the A/B testing progression for new desktop traffic. Between mid-2012 and mid-2014, traffic allocated to early variants (`/lander-1`, `/lander-2`, and `/lander-4`) resulted in a 45%–55% CTR, underperforming the `/home` page's 60%–66% baseline and reducing overall monthly averages. In August 2014, the deployment of `/lander-5` achieved a 62.1% CTR, matching the `/home` baseline. Reallocating traffic volume to `/lander-5` in late 2014 stabilized the overall desktop acquisition CTR above 60% by early 2015.
 
-**Table 2:** Average time spent in each landing page
-|landing page| avg time spent (sec)|
-|----------|:----------:|
-|`/home`|	185.6|
-|`/lander-1`|	184.3|
-|`/lander-2`|	185.6|
-|`/lander-3`|	184.6|
-|`/lander-4`|	187.9|
-|`/lander-5`|	184.2|
+|<img width="1389" height="690" alt="image" src="https://github.com/user-attachments/assets/a62dbe2f-73b6-497e-ad37-64494291eced" />|
+|:---------:|
+|**Figure 3:** Desktop Acquisition CTR of New Customer on Desktop|
 
-Non-bounce sessions averaged 185 seconds (~3 minutes), significantly exceeding the e-commerce benchmark of 60–120 seconds ([source](https://www.growthsuite.net/glossary/average-time-on-page)). This high engagement, paired with a 44.8% drop-off rate (well below the industry average of 70–90%), indicates strong initial user intent and content relevance ([source](https://www.leadraftmarketing.com/post/best-practices-to-decrease-bounce-rate-for-landing-pages)).
+- **Main finding 2:** Audience intent dictates the conversion ceiling, validating the split-routing architecture. Data shows that Repeat and Brand-search cohorts outperform New Nonbrand segments by a 10% to 15% margin across all timeframes and devices. The routing architecture aligns with this user behavior: `/lander-x` pages process nonbrand traffic, while the `/home` page is reserved for Direct, Brand, and Returning users. Operating as a navigation hub, the `/home` page maintains a 68%–75% conversion rate. The remaining top-funnel drop-offs represent the expected baseline of acquiring first-time buyers.
 
-These findings effectively reject the hypothesis of a landing page design flaw, shifting the strategic focus to downstream friction points.
+|<img width="1389" height="690" alt="image" src="https://github.com/user-attachments/assets/9a03bf39-15a3-4209-b03d-d52589222a15" />|
+|:---------:|
+|**Figure 4:** Top-Funnel CTR by Customer Segment and Landing Page Variant|
 
-***Traffic Source***
-
-**Main finding 1:** Rigorous A/B testing eventually yielded a winning landing page (/lander-5), overcoming prolonged periods of underperforming variants.
-
-Historical data reveals a challenging but successful optimization journey for new acquisition desktop traffic. From mid-2012 to mid-2014, significant volume was routed to experimental variants (`/lander-1`, `/lander-2`, and `/lander-4`) that consistently underperformed the original `/home` page's strong baseline of 60%–66% CTR. These early variants languished in the 45%–55% range, dragging down the overall monthly averages due to traffic misallocation. However, the breakthrough occurred in August 2014 with the deployment of `/lander-5`. This variant immediately achieved a 62.1% CTR, matching the `/home` baseline. By heavily shifting volume to `/lander-5` in late 2014, the overall desktop acquisition CTR recovered and stabilized above 60% into early 2015.
-
-**Main finding 2: Audience intent dictates the conversion ceiling, validating the platform's split-routing architecture.**
-
-While A/B testing optimized the journey for first-time visitors, data shows that user intent (Trust/Brand familiarity) is the ultimate driver of conversion. Across all timeframes and devices, Repeat and Brand-search cohorts consistently outperform New Nonbrand segments by a 10% to 15% margin. The company's routing architecture capitalizes on this perfectly: optimized `/lander-x` pages do the heavy lifting of converting cold traffic, while the legacy `/home` page is reserved for high-intent (Direct, Brand, and Returning) users. Operating as a pure navigation hub for loyal customers, the `/home` page effortlessly sustains an elite 68%–75% conversion rate. The remaining top-funnel drop-offs are no longer a UX bottleneck, but rather the natural friction of acquiring first-time buyers.
-
-**Main finding 3:** Mobile-specific landing page routing salvaged mobile performance, though a 10% gap remains.
-
-Prior to mid-2013, mobile nonbrand traffic was severely underperforming, languishing at a 28% - 33% click-through rate (CTR) across /home and /lander-1. The introduction of /lander-3, a dedicated mobile landing page, immediately corrected this trajectory, stabilizing mobile CTR at 52% - 54% through early 2015. While this represents a massive operational win, mobile performance still trails the desktop /lander-5 benchmark by approximately 10-12%, indicating the need for a final round of mobile viewport optimization.
+- **Main finding 3:** Mobile-specific routing improved mobile CTR, though a 10%–12% performance gap remains compared to desktop. Prior to mid-2013, mobile nonbrand traffic maintained a 28%–33% click-through rate (CTR) on the `/home` and `/lander-1` pages. The introduction of `/lander-3`, a dedicated mobile landing page, increased and stabilized the mobile CTR at 52%–54% through early 2015. Despite this increase, mobile performance continues to trail the desktop `/lander-5` benchmark by approximately 10%–12%, identifying mobile viewport optimization as the primary remaining action item at this stage.
 
 |<img width="1033" height="518" alt="image" src="https://github.com/user-attachments/assets/305f02de-312d-4c8e-a678-8de09d92e5d5" />|
 |:----------------:|
 |**Figure 5:** Click-through rate Trend by device|
 
+**Conclusion:**
+>The top-funnel is functioning exactly as an optimized filter should. The remaining drop-offs are largely the natural friction of acquiring first-time buyers. The only actionable structural leak left at this stage is the ~10% performance gap on mobile devices, which requires a final round of mobile viewport optimization.
+
 
 ## **Bottleneck 2 — Detail View → Add-to-Cart (~55% drop-off):**
 
-|<img width="1186" height="690" alt="image" src="https://github.com/user-attachments/assets/e005ec95-6531-4caf-a1f6-b30636b18736" />|
-|:----------------:|
+
 |**Figure 5:** Product Detail to Add-to-Cart Conversion Rate by Product|
+|:----------------:|
+|<img width="1186" height="690" alt="image" src="https://github.com/user-attachments/assets/e005ec95-6531-4caf-a1f6-b30636b18736" />|
 
 ## **Bottleneck 3 — Check-out funnel (Shipping → Billing → Purchased):**
 
-***Key takeaway:*** The checkout flow is not the main problem. Overall, it performs better than the market benchmark, and the biggest drop-off happens earlier at the cart stage rather than during shipping or payment.
+***Key takeaway:*** The checkout flow outperforms global e-commerce benchmarks, indicating that bottom-funnel UI/UX is highly optimized. The primary drop-off occurs at the initial Cart stage rather than during shipping or payment steps.
 
-**Main finding 1:** The overall cart abandonment rate is 65.97%, which is better than the global e-commerce benchmark of 69%–72% ([source](https://baymard.com/lists/cart-abandonment-rate)). This suggests that the bottom of the funnel is performing reasonably well, even though the total number of lost sessions is still large in absolute terms.
+- **Main finding 1:** The hypothesis of widespread bottom-funnel friction is rejected. The overall cart abandonment rate is 65.97%, outperforming the global e-commerce benchmark of 69%–72% ([source](https://baymard.com/lists/cart-abandonment-rate)). This confirms the checkout infrastructure is structurally sound, despite the absolute volume of drop-offs.
 
 Table 4: Total Session and Conversion Rate of each Stage in Check-out Funnel 
 |total cart sessions|	total shipping sessions|	cart to shipping cvr (%)|	total billing sessions|	shipping to billing cvr (%)| total success purchase|	billing to purchased cvr (%)|	cart abandonment rate (%)|
 |:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
 |94,953|	64,484|	67.91|	52,058|	80.73|	32,313|	62.07|	65.97|
 
-**Main finding 2:** The “shipping cost shock” hypothesis is not supported by the data. Once users reach the /shipping page, 80.73% continue to /billing, which means shipping fees and delivery timelines are not the main reason customers leave.
-
-**Main finding 3:** Payment is also not a major bottleneck. The /billing-2 → success conversion rate stays at 62.07%, showing that the payment step is working consistently well.
-
-Table 5: Billing landing page
+- **Main finding 2:** The “shipping cost shock” hypothesis is not supported by the data. Upon reaching the `/shipping` page, 80.73% of sessions proceed to `/billing`. This high progression rate demonstrates that shipping fees and delivery timelines are not significant deterrents for users at this stage.
+   
+- **Main finding 3:** Payment friction was resolved via historical A/B testing. The original `/billing` page yielded a 44.79% conversion rate. The deployment of `/billing-2` in September 2012 increased and stabilized the payment-to-purchase conversion rate at 63.36%, confirming the payment step operates efficiently.
+  
+Table 5: Billing Landing Page Performance
 |Page URL| Period|Total Billing Session|Successful Purchase|Billing to Successful Purchase CVR (%)|
 |:-----|:-----:|:-----:|:-----:|:-----:|
 |`/billing`  |3/2012 - 1/2013 |3,617 |1,620 |44.79|

@@ -84,7 +84,7 @@ To better understand these bottlenecks and explain why high traffic volume does 
 |:---------:|
 |**Figure 4:** Top-Funnel CTR by Customer Segment and Landing Page Variant|
 
-- **Main finding 3:** Mobile-specific routing improved mobile CTR, though a 10%–12% performance gap remains compared to desktop. Prior to mid-2013, mobile nonbrand traffic maintained a 28%–33% click-through rate (CTR) on the `/home` and `/lander-1` pages. The introduction of `/lander-3`, a dedicated mobile landing page, increased and stabilized the mobile CTR at 52%–54% through early 2015. Despite this increase, mobile performance continues to trail the desktop `/lander-5` benchmark by approximately 10%–12%, identifying mobile viewport optimization as the primary remaining action item at this stage.
+- **Main finding 3:** Mobile-specific routing improved mobile CTR, though a 10%–12% performance gap remains compared to desktop. Prior to mid-2013, mobile nonbrand traffic maintained a 28%–33% CTR on the `/home` and `/lander-1` pages. The introduction of `/lander-3`, a dedicated mobile landing page, increased and stabilized the mobile CTR at 52%–54% through early 2015. Despite this increase, mobile performance continues to trail the desktop `/lander-5` benchmark by approximately 10%–12%, identifying mobile viewport optimization as the primary remaining action item at this stage.
 
 |<img width="1033" height="518" alt="image" src="https://github.com/user-attachments/assets/305f02de-312d-4c8e-a678-8de09d92e5d5" />|
 |:----------------:|
